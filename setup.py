@@ -25,7 +25,7 @@ test_requirements = [
 
 setup(
     name='tendril-costing',
-    version='0.1.1',
+    version='0.1.2',
     description="Tendril Costing Primitives",
     long_description=readme,
     author="Chintalagiri Shashank",
