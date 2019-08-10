@@ -18,10 +18,14 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+"""
+Hierarchical Analysis of Costing Information
+--------------------------------------------
+"""
 
 import json
 
-from future.utils import viewitems
+from six import viewitems
 
 from tendril.conventions.electronics import parse_ident
 from tendril.utils.types.currency import native_currency_defn
@@ -109,6 +113,8 @@ class HierachicalCostingBreakup(CostingBreakupBase):
 
     @property
     def sections(self):
+        if self.total_cost == 0:
+            return []
         seclist = [
             (k, int((v.total_cost / self.total_cost) * 100), v.total_cost)
             for k, v in viewitems(self._sections)
